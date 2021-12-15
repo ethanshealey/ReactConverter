@@ -1,38 +1,68 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
+
+body {
+  background: #F0F2F5;
+}
+
+.site-layout-content {
+  min-height: 280px;
+  padding: 24px;
+  background: #fff;
+  margin-top: 16px;
+}
+
+.logo {
+  float: left;
+  width: 160px;
+  height: 31px;
+  line-height: 31px;
+  font-family: 'Paytone One', sans-serif;
+  font-size: 35px;
+  margin: 16px 24px 16px 0;
+  color: #fff;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.ant-row-rtl .logo {
+  float: right;
+  margin: 16px 0 16px 24px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header-container {
+  width: 100%;
+  text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.header {
+  font-family: 'Paytone One', sans-serif;
+  font-size: 5vw;
 }
 
-.App-link {
-  color: #61dafb;
+.header-md {
+  font-family: 'Paytone One', sans-serif;
+  font-size: 3vw;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.content-container {
+  width: 100%;
+  text-align: center;
+}
+
+.content {
+  margin-bottom: 24px;
+}
+
+.paytone {
+  font-family: 'Paytone One', sans-serif;
+}
+
+.play-container {
+  width: 100%;
+  text-align: center;
+}
+
+.sub {
+  font-weight: 200;
+  font-style: italic;
+  margin-top: -2%;
 }
