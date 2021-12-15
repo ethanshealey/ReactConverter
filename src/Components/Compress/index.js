@@ -36,7 +36,7 @@ const Home = () => {
     const compress = () => {
         imageConversion.dataURLtoFile(uri, currentFormat).then(file => {
             let size = 0
-            compressionLevel === 'low' ? size = fileSize / 1.5 : compressionLevel === 'medium' ? size = fileSize / 2 : compressionLevel === 'extreme' ? size = fileSize / 3 : size = fileSize
+            compressionLevel === 'low' ? size = fileSize / 1.5 : compressionLevel === 'medium' ? size = fileSize / 2 : compressionLevel === 'high' ? size = fileSize / 3 : compressionLevel === 'extreme' ? size = fileSize / 5 : size = fileSize
             console.log(size)
             imageConversion.compressAccurately(file, size).then(compressedFile => {
                 imageConversion.downloadFile(compressedFile, `${filename.split('.')[0]}.compressed.${currentFormat}`)
@@ -50,7 +50,7 @@ const Home = () => {
                 <p className="ant-upload-drag-icon">
                 <InboxOutlined />
                 </p>
-                <p className="ant-upload-text">Click or drag file to upload</p>
+                <p className="ant-upload-text">Click or drag a file to upload and compress</p>
             </Dragger>
             
             <Divider />
@@ -63,6 +63,7 @@ const Home = () => {
                         <Select value={compressionLevel} onChange={setCompressionLevel} style={{ width: 120 }}>
                             <Option value="low">Low</Option>
                             <Option value="medium">Medium</Option>
+                            <Option value="high">High</Option>
                             <Option value="extreme">Extreme</Option>
                         </Select>
                     </Space>
