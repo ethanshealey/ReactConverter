@@ -1,6 +1,6 @@
 {
   "name": "converter",
-  "homepage": "http://ethanshealey.github.io/ReactConverter",
+  "homepage": "http://converter.ethanshealey.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
