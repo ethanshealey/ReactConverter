@@ -58,7 +58,7 @@ const Home = () => {
             <Divider />
             { uri ? 
                 <Space direction='vertical' size='middle' style={{ width: '100%', textAlign: 'center' }}>
-                    <Image width="25%" src={uri} alt="img"/>
+                    <Image width="50%" src={uri} alt="img"/>
                     <div>Original filesize: {Math.round(fileSize * 100) / 100} KB</div>
                     <div>Expected filesize: {
                         Math.round((compressedSize) * 100) / 100
@@ -72,7 +72,7 @@ const Home = () => {
                             <Option value="extreme">Extreme</Option>
                         </Select>
                     </Space>
-                    <Button type='primary' onClick={compress}>Compress and Download</Button>
+                    <Button type='primary' onClick={compress}>Compress and Download</Button> 
                 </Space>
                 :
                 <div style={{ textAlign: 'center' }}>

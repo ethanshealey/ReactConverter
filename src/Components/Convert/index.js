@@ -50,13 +50,14 @@ const Convert = () => {
             <Divider />
             { uri ? 
                 <Space direction='vertical' size='middle' style={{ width: '100%', textAlign: 'center' }}>
-                    <Image width="25%" src={uri} alt="img"/>
+                    <Image width="50%" src={uri} alt="img"/>
+                    <div>Original type: {currentFormat.split('/')[1]}</div>
                     <Space direction='horizontal'>
                         <div>Convert to: </div>
                         <Select placeholder="Choose a format" value={newFormat} onChange={setNewFormat} style={{ width: 120 }}>
-                            <Option value="jpeg" disabled={currentFormat.split('/')[1] == 'jpeg' || currentFormat.split('/')[1] == 'jpg'}>JPEG</Option>
-                            <Option value="png" disabled={currentFormat.split('/')[1] == "png"}>PNG</Option>
-                            <Option value="gif" disabled={currentFormat.split('/')[1] == "gif"}>GIF</Option>
+                            <Option value="jpeg" disabled={currentFormat.split('/')[1] === 'jpeg' || currentFormat.split('/')[1] === 'jpg'}>JPEG</Option>
+                            <Option value="png" disabled={currentFormat.split('/')[1] === "png"}>PNG</Option>
+                            <Option value="gif" disabled={currentFormat.split('/')[1] === "gif"}>GIF</Option>
                         </Select>
                         <Button type='primary' onClick={convert}>Go</Button>
                     </Space>
