@@ -50,7 +50,7 @@ const Convert = () => {
             <Divider />
             { uri ? 
                 <Space direction='vertical' size='middle' style={{ width: '100%', textAlign: 'center' }}>
-                    <Image width="300px" src={uri} alt="img"/>
+                    <Image width="25%" src={uri} alt="img"/>
                     <Space direction='horizontal'>
                         <div>Convert to: </div>
                         <Select placeholder="Choose a format" value={newFormat} onChange={setNewFormat} style={{ width: 120 }}>

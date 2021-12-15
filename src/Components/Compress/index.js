@@ -58,7 +58,7 @@ const Home = () => {
             <Divider />
             { uri ? 
                 <Space direction='vertical' size='middle' style={{ width: '100%', textAlign: 'center' }}>
-                    <Image width="300px" src={uri} alt="img"/>
+                    <Image width="25%" src={uri} alt="img"/>
                     <div>Original filesize: {Math.round(fileSize * 100) / 100} KB</div>
                     <div>Expected filesize: {
                         Math.round((compressedSize) * 100) / 100
