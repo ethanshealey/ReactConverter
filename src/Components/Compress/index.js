@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Divider, Upload, Image, Space, Select, Button } from 'antd'
 import * as imageConversion from 'image-conversion';
 import { InboxOutlined } from '@ant-design/icons';
@@ -12,7 +12,12 @@ const Home = () => {
     const [ filename, setFilename ] = useState('')
     const [ currentFormat, setCurrentFormat ] = useState('')
     const [ fileSize, setFileSize ] = useState(0)
-    const [ compressionLevel, setCompressionLevel ] = useState('low')
+    const [ compressionLevel, setCompressionLevel ] = useState('')
+    const [ compressedSize, setCompressedSize ] = useState(0)
+
+    useEffect(() => { 
+        setCompressedSize(compressionLevel === 'low' ? fileSize / 1.5 : compressionLevel === 'medium' ? fileSize / 2 : compressionLevel === 'high' ? fileSize / 3 : compressionLevel === 'extreme' ? fileSize / 5 : fileSize)
+     }, [compressionLevel])
 
     const fileToDataUri = (file) => new Promise((resolve, reject) => {
         const reader = new FileReader()
@@ -30,15 +35,12 @@ const Home = () => {
             setUri('')
             return
         }
-        fileToDataUri(file).then(uri => setUri(uri))
+        fileToDataUri(file).then(uri => setUri(uri)).then(setCompressionLevel('low'))
     }
 
     const compress = () => {
         imageConversion.dataURLtoFile(uri, currentFormat).then(file => {
-            let size = 0
-            compressionLevel === 'low' ? size = fileSize / 1.5 : compressionLevel === 'medium' ? size = fileSize / 2 : compressionLevel === 'high' ? size = fileSize / 3 : compressionLevel === 'extreme' ? size = fileSize / 5 : size = fileSize
-            console.log(size)
-            imageConversion.compressAccurately(file, size).then(compressedFile => {
+            imageConversion.compressAccurately(file, compressedSize).then(compressedFile => {
                 imageConversion.downloadFile(compressedFile, `${filename.split('.')[0]}.compressed.${currentFormat}`)
             })
         })
@@ -59,7 +61,7 @@ const Home = () => {
                     <Image width="300px" src={uri} alt="img"/>
                     <div>Original filesize: {Math.round(fileSize * 100) / 100} KB</div>
                     <div>Expected filesize: {
-                        Math.round((compressionLevel === 'low' ? fileSize / 1.5 : compressionLevel === 'medium' ? fileSize / 2 : compressionLevel === 'high' ? fileSize / 3 : compressionLevel === 'extreme' ? fileSize / 5 : fileSize) * 100) / 100
+                        Math.round((compressedSize) * 100) / 100
                     } KB</div>
                     <Space direction='horizontal'>
                         <div>Compression level: </div>
