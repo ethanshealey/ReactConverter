@@ -58,6 +58,9 @@ const Home = () => {
                 <Space direction='vertical' size='middle' style={{ width: '100%', textAlign: 'center' }}>
                     <Image width="300px" src={uri} alt="img"/>
                     <div>Original filesize: {fileSize} KB</div>
+                    <div>Expected filesize: {
+                        compressionLevel === 'low' ? fileSize / 1.5 : compressionLevel === 'medium' ? fileSize / 2 : compressionLevel === 'high' ? fileSize / 3 : compressionLevel === 'extreme' ? fileSize / 5 : fileSize
+                    } KB</div>
                     <Space direction='horizontal'>
                         <div>Compression level: </div>
                         <Select value={compressionLevel} onChange={setCompressionLevel} style={{ width: 120 }}>
