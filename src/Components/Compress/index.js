@@ -57,9 +57,9 @@ const Home = () => {
             { uri ? 
                 <Space direction='vertical' size='middle' style={{ width: '100%', textAlign: 'center' }}>
                     <Image width="300px" src={uri} alt="img"/>
-                    <div>Original filesize: {fileSize} KB</div>
+                    <div>Original filesize: {Math.round(fileSize * 100) / 100} KB</div>
                     <div>Expected filesize: {
-                        compressionLevel === 'low' ? fileSize / 1.5 : compressionLevel === 'medium' ? fileSize / 2 : compressionLevel === 'high' ? fileSize / 3 : compressionLevel === 'extreme' ? fileSize / 5 : fileSize
+                        Math.round((compressionLevel === 'low' ? fileSize / 1.5 : compressionLevel === 'medium' ? fileSize / 2 : compressionLevel === 'high' ? fileSize / 3 : compressionLevel === 'extreme' ? fileSize / 5 : fileSize) * 100) / 100
                     } KB</div>
                     <Space direction='horizontal'>
                         <div>Compression level: </div>
